@@ -16,5 +16,4 @@ public class MongoConfiguration
             return $@"mongodb://{User}:{Password}@{Host}:{Port}";
         }
     }
-
 }

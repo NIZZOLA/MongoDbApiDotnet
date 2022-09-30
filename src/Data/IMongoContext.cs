@@ -3,7 +3,8 @@ using MongoDbApi.Models;
 
 namespace MongoDbApi.Data;
 
-public interface ITodoContext
+public interface IMongoContext
 {
     IMongoCollection<TodoModel> Todos { get; }
+    IMongoCollection<PersonModel> Persons { get; }
 }

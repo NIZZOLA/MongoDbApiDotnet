@@ -1,5 +1,6 @@
 using MongoDbApi;
 using MongoDbApi.Data;
+using MongoDbApi.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,11 +11,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<MongoConfiguration>(builder.Configuration.GetSection("MongoConfiguration"));
 
-builder.Services.AddSingleton<ITodoContext, TodoContext>();
+builder.Services.AddSingleton<IMongoContext, MongoContext>();
 builder.Services.AddSingleton<ITodoRepository,TodoRepository>();
+builder.Services.AddSingleton<IPersonRepository, PersonRepository>();
 
 var app = builder.Build();
 app.MapTodoModelEndpoints();
+app.MapPersonModelEndpoints();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

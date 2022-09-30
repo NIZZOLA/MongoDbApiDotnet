@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MongoDbApi.Data;
 using MongoDbApi.Models;
+using MongoDbApi.Repository;
 
 namespace MongoDbApi;
 public static class TodoModelEndpointsClass

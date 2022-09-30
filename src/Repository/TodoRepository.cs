@@ -1,12 +1,13 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDbApi.Data;
 using MongoDbApi.Models;
 
-namespace MongoDbApi.Data;
+namespace MongoDbApi.Repository;
 public class TodoRepository : ITodoRepository
 {
-    private readonly ITodoContext _context;
-    public TodoRepository(ITodoContext context)
+    private readonly IMongoContext _context;
+    public TodoRepository(IMongoContext context)
     {
         _context = context;
     }
@@ -19,7 +20,7 @@ public class TodoRepository : ITodoRepository
     }
     public Task<TodoModel> GetOne(long id)
     {
-        var filter = this.FindById(id); 
+        var filter = FindById(id);
         return _context
                 .Todos
                 .Find(filter)
@@ -42,7 +43,7 @@ public class TodoRepository : ITodoRepository
     }
     public async Task<bool> Delete(long id)
     {
-        var filter = this.FindById(id);
+        var filter = FindById(id);
         DeleteResult deleteResult = await _context
                                             .Todos
                                           .DeleteOneAsync(filter);

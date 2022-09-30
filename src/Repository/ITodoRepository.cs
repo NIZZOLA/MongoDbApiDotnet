@@ -1,6 +1,6 @@
 ﻿using MongoDbApi.Models;
 
-namespace MongoDbApi.Data;
+namespace MongoDbApi.Repository;
 
 public interface ITodoRepository
 {
