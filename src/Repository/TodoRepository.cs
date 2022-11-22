@@ -55,8 +55,8 @@ public class TodoRepository : ITodoRepository
     {
         return Builders<TodoModel>.Filter.Eq(m => m.Id, id);
     }
-    public async Task<long> GetNextId()
+    public async Task<int> GetNextId()
     {
-        return await _context.Todos.CountDocumentsAsync(new BsonDocument()) + 1;
+        return (int) await _context.Todos.CountDocumentsAsync(new BsonDocument()) + 1;
     }
 }

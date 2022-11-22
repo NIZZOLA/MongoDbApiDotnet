@@ -9,5 +9,5 @@ public interface ITodoRepository
     Task Create(TodoModel todo);
     Task<bool> Update(TodoModel todo);
     Task<bool> Delete(long id);
-    Task<long> GetNextId();
+    Task<int> GetNextId();
 }
